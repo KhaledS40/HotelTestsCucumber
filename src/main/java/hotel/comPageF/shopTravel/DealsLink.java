@@ -19,7 +19,7 @@ public class DealsLink {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath= "//div[contains(text(),'Deals')]")
+    @FindBy(xpath= "//a[@aria-label='Deals']")
     WebElement dealsLink;
 
     @FindBy(css = "button[aria-label='Where to?']")
@@ -34,10 +34,10 @@ public class DealsLink {
     @FindBy(name = "EGDSDateRange-date-selector-trigger")
     WebElement calendarIcon;
 
-    @FindBy(xpath = "//tbody/tr[1]/td[1]/div[1]")
+    @FindBy(xpath = "(//div[@role='button'])[10]")
     WebElement dateFrom;
 
-    @FindBy(xpath = "//tbody/tr[1]/td[1]/div[1]")
+    @FindBy(xpath = "(//div[@role='button'])[20]")
     WebElement dateTo;
 
     @FindBy(css = ".uitk-button.uitk-button-medium.uitk-button-has-text.uitk-button-primary.uitk-layout-flex-item")
