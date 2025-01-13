@@ -34,7 +34,7 @@ public class CarsLink {
     @FindBy(css = "#d1-btn")
     WebElement caledarIcon;
 
-    @FindBy(css = "button[aria-label='Nov 15, 2024']")
+    @FindBy(xpath = "//*[@id='wizard-car-pwa-1']/div[2]/div[1]/div/div/div[1]/div/div[2]/div/div[1]/div[2]/div[1]/table/tbody/tr[3]/td[4]")
     WebElement pickUpDate;
 
     @FindBy(xpath = "//button[normalize-space()='Done']")

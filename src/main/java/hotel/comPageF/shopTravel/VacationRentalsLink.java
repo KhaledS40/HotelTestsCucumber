@@ -39,7 +39,7 @@ public class VacationRentalsLink {
     @FindBy(xpath = "//*[@id='wizard-vr-pwa-1']/div/div[2]/div/div/div[1]/div/div")
     WebElement checkInDateBox;
 
-    @FindBy(css = "button[aria-label='Dec 20, 2024']")
+    @FindBy(xpath = "//*[@id='wizard-vr-pwa-1']/div/div[2]/div/div/div[1]/div/div[2]/div/div[1]/div[2]/div[1]/table/tbody/tr[3]/td[4]")
     WebElement checkInDate;
 
     @FindBy(css = "button[aria-label='Save changes and close the date picker.']")

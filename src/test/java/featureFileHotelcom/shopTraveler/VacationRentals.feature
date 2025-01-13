@@ -1,7 +1,7 @@
 Feature: Using Search navigation to find places
 
   @vacationRentals
-  Scenario:
+  Scenario: User can search for locations and dates to vacation
 
     Given user is on the homepage
     And user click on "Shop" Travel link
