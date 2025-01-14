@@ -1,9 +1,13 @@
 package hotel.comPageF.shopTravel;
 
+import com.aventstack.extentreports.util.Assert;
+import io.reactivex.rxjava3.core.Completable;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class GiftCardsLink {
 
@@ -19,11 +23,11 @@ public class GiftCardsLink {
     Using @FindBy to store elements
      */
 
-    @FindBy(xpath = "//div[normalize-space()='Gift Cards']")
+    @FindBy(xpath = "//div[contains(text(),'Gift Cards')]")
     WebElement giftCardsLink;
 
     @FindBy(xpath = "//a[normalize-space()='Buy Now']")
-    WebElement buyButton;
+    WebElement buyNowButton;
 
     @FindBy(css = "#recipientName-input")
     WebElement theirNameBox;
@@ -34,13 +38,16 @@ public class GiftCardsLink {
     @FindBy(css = "button[type='submit']")
     WebElement pickGiftCardDesign;
 
+    @FindBy(xpath = "//*[@id='app-root']/div/main/div/form/section/div[1]/button")
+    WebElement digitalCard;
+
     @FindBy(css = "#selectedGroupOrdinal-1-label")
     WebElement holidaysDesign;
 
     @FindBy(css = "button[aria-label='Next card design']")
     WebElement nextArrow;
 
-    @FindBy(css = "#fp-8")
+    @FindBy(css = "div[aria-label='Hanukkah, Snowy']")
     WebElement giftCardPick;
 
     @FindBy(css = "button[type='submit']")
@@ -50,7 +57,7 @@ public class GiftCardsLink {
     WebElement incrementSign;
 
     @FindBy(css = "button[aria-label='Increment quantity']")
-    WebElement addQuantiy;
+    WebElement addQuantity;
 
     @FindBy(css = "button[type='submit']")
     WebElement addMessageButton;
@@ -97,8 +104,118 @@ public class GiftCardsLink {
     @FindBy(css = ".btn.btn--primary")
     WebElement checkOutButton;
 
-    @FindBy(css = "//span[normalize-space()='Order Total']")  // Order Total
+    @FindBy(xpath = "//span[normalize-space()='Order Total']")  // Order Total
     WebElement orderTotal;
 
 
+    public void clickGiftCards(){
+
+        giftCardsLink.click();
+    }
+    public void clickBuyNow(){
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", buyNowButton);
+        buyNowButton.click();
+    }
+    public void enterRecipientAndSenderName(){
+
+        theirNameBox.sendKeys("Bob");
+        yourNameBox.sendKeys("John");
+    }
+    public void clickPickGiftCard(){
+
+        pickGiftCardDesign.click();
+    }
+    public void selectTypesCard(){
+
+        digitalCard.click();
+    }
+    public void clickHolidaysType(){
+
+        holidaysDesign.click();
+    }
+    public void selectCardDesign(){
+
+        driver.manage().deleteAllCookies();
+        giftCardPick.click();
+    }
+    public void clickHowMuch(){
+
+        howMuchButton.click();
+    }
+    public void addDollarsAmount(){
+
+        try{
+            for (int i=0; i>4; i++){
+                incrementSign.click();
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    public void setQuantityOfCards(){
+
+        addQuantity.click();
+    }
+    public void addMessageToCard(){
+
+        addMessageButton.click();
+        messageBox.sendKeys("You are my special person");
+        whereIsItGoingButton.click();
+    }
+    public void selectDeliveryTypeAndEnterRecipientEmail(){
+
+        recipientEmail.sendKeys("bob.john@gmail.com");
+        confirmRecipientEmail.sendKeys("bob.john@gmail.com");
+    }
+    public void selectDeliveryDate(){
+
+        deliveryCalendar.click();
+        deliveryDate.click();
+    }
+    public void selectTimeZone(){
+
+        sendAtSpecificTimeLink.click();
+
+        hourInput.click();
+        Select select = new Select(hourInput);
+        select.selectByVisibleText("4");
+    }
+    public void selectHourZone(){
+
+        minuteInput.click();
+        Select select = new Select(minuteInput);
+        select.selectByVisibleText("30");
+    }
+    public void selectAMPMType(){
+
+        AMAndPM.click();
+        Select select = new Select(AMAndPM);
+        select.selectByVisibleText("AM");
+        TimeZoneBox.sendKeys("DC - EST");
+        addToCardButton.click();
+    }
+    public void verifyTransaction(){
+
+        String orderText= orderSummaryText.getText();
+        String text = "Order Summary";
+        if (orderText ==text){
+            System.out.println("Test passed");
+        } else {
+            System.out.println("Test Failed");
+        }
+
+    }
+    public void clickCheckout(){
+
+        checkOutButton.click();
+        String order = orderTotal.getText();
+        String expectedText = "Order Total";
+        if (expectedText ==order){
+            System.out.println("Test passed");
+        } else {
+            System.out.println("Test Failed");
+        }
+    }
 }
