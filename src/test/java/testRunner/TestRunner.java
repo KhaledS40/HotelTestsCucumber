@@ -6,6 +6,6 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/java/featureFileHotelcom", glue = {"stepDefinitionsHotelcom"}, monochrome = true
-        , plugin = {"pretty" ,"html:target/cucumber-report"}, tags = "@giftCards")
+        , plugin = {"pretty" ,"html:target/cucumber-report"}, tags = "@vacationRentals")
 public class TestRunner {
 }

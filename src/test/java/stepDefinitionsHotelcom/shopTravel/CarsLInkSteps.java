@@ -22,7 +22,7 @@ public class CarsLInkSteps {
         cars.selectPickUpLocation();
     }
     @And("user select pick up and drop of dates")
-    public void user_select_pickUp_and_DropOff_dates(){
+    public void user_select_pickUp_and_DropOff_dates() throws InterruptedException {
 
         cars.selectPickUpAndDropOffDate();
     }

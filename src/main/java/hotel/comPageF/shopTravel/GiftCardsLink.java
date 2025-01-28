@@ -9,6 +9,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.List;
+
 public class GiftCardsLink {
 
     public WebDriver driver;
@@ -23,8 +25,11 @@ public class GiftCardsLink {
     Using @FindBy to store elements
      */
 
-    @FindBy(xpath = "//div[contains(text(),'Gift Cards')]")
-    WebElement giftCardsLink;
+//    @FindBy(xpath = "//div[contains(text(),'Gift Cards')]")
+//    WebElement giftCardsLink;
+
+    @FindBy(css = ".uitk-text.uitk-type-300.uitk-text-standard-theme")
+    List<WebElement> shopTravelLinks;  // Gift Cards
 
     @FindBy(xpath = "//a[normalize-space()='Buy Now']")
     WebElement buyNowButton;
@@ -49,6 +54,9 @@ public class GiftCardsLink {
 
     @FindBy(css = "div[aria-label='Hanukkah, Snowy']")
     WebElement giftCardPick;
+
+    @FindBy(id = "truste-consent-button")
+    WebElement acceptAllCookies;
 
     @FindBy(css = "button[type='submit']")
     WebElement howMuchButton;
@@ -77,7 +85,7 @@ public class GiftCardsLink {
     @FindBy(css = "#deliveryDate-input")
     WebElement deliveryCalendar;
 
-    @FindBy(css = "td[aria-label='Monday, January 20, 2025']")
+    @FindBy(css = "td[aria-label='Thursday, January 30, 2025']")
     WebElement deliveryDate;
 
     @FindBy(css = "button[class='btn-link btn-link--center'] span")
@@ -110,7 +118,16 @@ public class GiftCardsLink {
 
     public void clickGiftCards(){
 
-        giftCardsLink.click();
+        try{
+        for (WebElement element : shopTravelLinks) {
+            if (element.getText().equals("Gift Cards")) {
+                element.click();
+                break;
+            }
+        }
+        } catch ( Exception e){
+            e.printStackTrace();
+        }
     }
     public void clickBuyNow(){
 
@@ -142,6 +159,7 @@ public class GiftCardsLink {
     }
     public void clickHowMuch(){
 
+        acceptAllCookies.click();
         howMuchButton.click();
     }
     public void addDollarsAmount(){

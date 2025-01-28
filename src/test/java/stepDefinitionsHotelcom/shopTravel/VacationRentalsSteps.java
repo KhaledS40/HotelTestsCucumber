@@ -22,13 +22,13 @@ public class VacationRentalsSteps {
     }
 
     @Then("user should select check in date")
-    public void user_should_select_check_in_date() {
+    public void user_should_select_check_in_date() throws InterruptedException {
 
         vacation.selectCheckInDate();
     }
 
     @Then("user should select check out date")
-    public void user_should_select_check_out_date() {
+    public void user_should_select_check_out_date() throws InterruptedException {
 
         vacation.selectCheckOutDate();
     }

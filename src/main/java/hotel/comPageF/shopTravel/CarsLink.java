@@ -34,7 +34,7 @@ public class CarsLink {
     @FindBy(css = "#d1-btn")
     WebElement caledarIcon;
 
-    @FindBy(xpath = "//*[@id='wizard-car-pwa-1']/div[2]/div[1]/div/div/div[1]/div/div[2]/div/div[1]/div[2]/div[1]/table/tbody/tr[3]/td[4]")
+    @FindBy(css = "button[aria-label='Mar 20, 2025']")
     WebElement pickUpDate;
 
     @FindBy(xpath = "//button[normalize-space()='Done']")
@@ -49,10 +49,10 @@ public class CarsLink {
     @FindBy(xpath = "//button[normalize-space()='Done']")
     WebElement doneButton2;
 
-    @FindBy(css = "button[aria-label='Same as pick-up']")
+    @FindBy(css = "div[data-testid='location-field-loc2-container']")
     WebElement dropOffLocationField;
 
-    @FindBy(css = "#location-field-loc2")
+    @FindBy(css = ".uitk-field-input.uitk-typeahead-input.uitk-typeahead-input-v2")
     WebElement textAreaDropOff;
 
     @FindBy(css = "li[class='uitk-action-list-item uitk-typeahead-result-item has-subtext uitk-action-list-item-relaxed'] div")
@@ -96,12 +96,14 @@ public class CarsLink {
         System.out.println("this is after selecting the location");
     }
 
-    public void selectPickUpAndDropOffDate(){
+    public void selectPickUpAndDropOffDate() throws InterruptedException {
 
         caledarIcon.click();
+        Thread.sleep(5000);
         pickUpDate.click();
         doneButton.click();
         calendarIcon2.click();
+        Thread.sleep(5000);
         dropOffDate.click();
         doneButton2.click();
     }

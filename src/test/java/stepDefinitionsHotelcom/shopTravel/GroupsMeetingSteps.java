@@ -22,7 +22,7 @@ public class GroupsMeetingSteps {
     }
 
     @When("user selects checkIn and checkOut dates")
-    public void user_selects_check_in_and_check_out_dates() {
+    public void user_selects_check_in_and_check_out_dates() throws InterruptedException {
 
         groups.enterCheckInAndCheckOutDate();
     }

@@ -73,9 +73,10 @@ public class GroupsAndMeetingsLink {
             }
         }
     }
-    public void enterCheckInAndCheckOutDate(){
+    public void enterCheckInAndCheckOutDate() throws InterruptedException {
 
         checkInBox.click();
+        Thread.sleep(1000);
         checkInDate.click();
         checkOutDate.click();
     }
